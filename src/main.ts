@@ -1,6 +1,5 @@
 import { fetchProduct } from "./services/apiService";
 import { Product } from "./models/product";
-
 async function mainFunction() {
   interface ProductData {
     id: number;
@@ -12,7 +11,7 @@ async function mainFunction() {
 
   const productsData = await fetchProduct();
 
-  const displayProducts = productsData.map((item: ProductData) => {
+  const products = productsData.map((item: ProductData) => {
     return new Product(
       item.id,
       item.title,
@@ -21,6 +20,13 @@ async function mainFunction() {
       item.discountPercentage,
     );
   });
-  console.log(displayProducts);
+  displayProducts(products);
 }
 mainFunction();
+
+export function displayProducts(products: Product[]) {
+  products.forEach((product) => {
+    const details = product.displayDetails();
+    console.log(details);
+  });
+}
