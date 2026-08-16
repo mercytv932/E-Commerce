@@ -1,6 +1,6 @@
 import { ApiError, handleError } from "../utils/errorHandler";
 
-export async function fetchProductt() {
+export async function fetchProduct() {
   try {
     const response = await fetch("https://dummyjson.com/products");
 
