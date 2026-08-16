@@ -20,7 +20,7 @@ export class Product {
   }
 
   displayDetails() {
-    return `This is ${this.title} ${this.category} for ${this.price} ${this.discountPercentage}`;
+    return `|${this.title}| ${this.category}| ${this.price} |${this.discountPercentage}| ${this.getPriceWithDiscount()} `;
   }
 
   getPriceWithDiscount() {

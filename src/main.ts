@@ -1,5 +1,7 @@
 import { fetchProduct } from "./services/apiService";
 import { Product } from "./models/product";
+import { calculateDiscount } from "./utils/disocuntCalculator";
+import { taxCalculator } from "./utils/taxCalculator";
 async function mainFunction() {
   interface ProductData {
     id: number;
@@ -27,6 +29,14 @@ mainFunction();
 export function displayProducts(products: Product[]) {
   products.forEach((product) => {
     const details = product.displayDetails();
-    console.log(details);
+
+    const tax = taxCalculator(product.price, product.category);
+    const discount = calculateDiscount(
+      product.price,
+      product.discountPercentage,
+    );
+    console.log(
+      `${details} | tax $${tax.toFixed(2)} | discount: $${discount.toFixed(2)}`,
+    );
   });
 }

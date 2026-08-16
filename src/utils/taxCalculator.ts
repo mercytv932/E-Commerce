@@ -6,5 +6,5 @@ export function taxCalculator(price: number, category: string) {
   }
 
   const tax = price * taxPercent;
-  return ` $${tax}`;
+  return tax;
 }
